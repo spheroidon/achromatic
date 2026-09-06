@@ -1,6 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://d107mmirjhjs3"]
 
 [ext_resource type="Texture2D" uid="uid://bs6gtodandbgt" path="res://assets/shotgun/shotgun_base.png" id="1_eb0xw"]
+[ext_resource type="Texture2D" uid="uid://dkvw173upyn3n" path="res://assets/shotgun/shotgun_empty.png" id="2_0mjtx"]
 [ext_resource type="Texture2D" uid="uid://b0ergn1am1j78" path="res://assets/shotgun/shotgun_shoot_1.png" id="2_hdh7l"]
 [ext_resource type="Texture2D" uid="uid://b4n1defuykyl6" path="res://assets/shotgun/shotgun_shoot_2.png" id="3_0mjtx"]
 [ext_resource type="Texture2D" uid="uid://dqq11nvmc8wlk" path="res://assets/shotgun/shotgun_shoot_3.png" id="4_vlad1"]
@@ -20,6 +21,14 @@ animations = [{
 "loop": 1,
 "name": &"default",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.2,
+"texture": ExtResource("2_0mjtx")
+}],
+"loop": 0,
+"name": &"empty",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.4,
@@ -46,7 +55,7 @@ animations = [{
 "duration": 0.9,
 "texture": ExtResource("9_hb2oo")
 }, {
-"duration": 0.35,
+"duration": 0.4,
 "texture": ExtResource("10_8yc2o")
 }],
 "loop": 0,

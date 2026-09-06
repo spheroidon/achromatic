@@ -8,14 +8,34 @@ const GUNS = [
 	{
 		"name": "Pistol",
 		"sprites": preload("res://assets/pistol/pistol.tres"),
-		"cooldown": 0.45
+		"cooldown": 0.45,
+		"ammo_type": 0,
+		"ammo_per_shot": 1
 	},
 	{
 		"name": "Shotgun",
 		"sprites": preload("res://assets/shotgun/shotgun.tres"),
-		"cooldown": 1.4
+		"cooldown": 1.4,
+		"ammo_type": 1,
+		"ammo_per_shot": 2
 	}
 ]
+
+const AMMO_TYPES = [
+	{
+		"name": "Bullets",
+		"max_amount": 200,
+		"starting_amount": 50
+	},
+	{
+		"name": "Shells",
+		"max_amount": 50,
+		"starting_amount": 8
+	}
+]
+
+var ammo: Array[int] = []
+
 var target_gun_index = 0
 var gun_index = 0
 var current_shoot_cooldown: float = 0.0
@@ -27,6 +47,8 @@ var sprinting: bool = false
 @onready var stair_handler: CollisionShape3D = $StairHandler
 
 func _ready():
+	for ammo_type in AMMO_TYPES:
+		ammo.append(ammo_type["starting_amount"])
 	switch_gun()
 	
 func _process(delta: float):
@@ -35,7 +57,7 @@ func _process(delta: float):
 		current_shoot_cooldown -= delta
 	
 	# Animations
-	if not gun_image.is_playing() and gun_image.current_animation == "shoot":
+	if not gun_image.is_playing() and gun_image.current_animation != "default":
 		gun_image.play("default")
 	
 	# Gun Switching
@@ -51,14 +73,23 @@ func _process(delta: float):
 		target_gun_index = 0
 	if Input.is_action_just_pressed("gun_1"):
 		target_gun_index = 1
-	if current_shoot_cooldown <= 0:
+	if current_shoot_cooldown <= 0 and gun_index != target_gun_index:
 		switch_gun()
 	
 	# Shooting
 	if Input.is_action_pressed("shoot") and current_shoot_cooldown <= 0:
-		current_shoot_cooldown = GUNS[gun_index]["cooldown"]
-		gun_image.play("shoot")
+		shoot()
 
+func shoot():
+		var gun = GUNS[gun_index]
+		if ammo[gun["ammo_type"]] >= gun["ammo_per_shot"]:
+			ammo[gun["ammo_type"]] -= gun["ammo_per_shot"]
+			current_shoot_cooldown = gun["cooldown"]
+			gun_image.play("shoot")
+		else:
+			current_shoot_cooldown = 0.6
+			gun_image.play("empty")
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

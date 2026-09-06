@@ -16,7 +16,11 @@ sky_material = SubResource("ProceduralSkyMaterial_g3pss")
 background_mode = 2
 sky = SubResource("Sky_i675q")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3pss"]
+albedo_color = Color(0.37, 0.37, 0.37, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_pmfrs"]
+material = SubResource("StandardMaterial3D_g3pss")
 size = Vector3(5, 1, 5)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i675q"]
@@ -56,6 +60,15 @@ mesh = SubResource("BoxMesh_pmfrs")
 [node name="StaticBody3D" type="StaticBody3D" parent="Box2" unique_id=792996864]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Box2/StaticBody3D" unique_id=1947974262]
+shape = SubResource("ConcavePolygonShape3D_i675q")
+
+[node name="Box3" type="MeshInstance3D" parent="." unique_id=1025670820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.401, 1, -13.228477)
+mesh = SubResource("BoxMesh_pmfrs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box3" unique_id=1158036967]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box3/StaticBody3D" unique_id=830629523]
 shape = SubResource("ConcavePolygonShape3D_i675q")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=277734886]

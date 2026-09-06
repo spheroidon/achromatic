@@ -33,6 +33,7 @@ func play(animation_name: String = current_animation):
 	frame_delta = 0.0
 	current_animation = animation_name
 	_get_animation_data(current_animation)
+	texture = _get_next_frame()
 	playing = true
 	
 func resume():
@@ -53,8 +54,9 @@ func _get_next_frame():
 	var frame_count = sprites.get_frame_count(current_animation)
 	if frame_index >= frame_count:
 		if not sprites.get_animation_loop(current_animation):
-			frame_index -= 1
+			frame_index = frame_count-1
 			playing = false
+			return sprites.get_frame_texture(current_animation,frame_index)
 		else:
 			frame_index = 0
 	_get_animation_data(current_animation)

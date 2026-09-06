@@ -1,6 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://n8v37whadm7"]
 
 [ext_resource type="Texture2D" uid="uid://dd0noc0sfq266" path="res://assets/pistol/pistol_base.png" id="1_cc3qq"]
+[ext_resource type="Texture2D" uid="uid://dxco628h3nwlk" path="res://assets/pistol/pistol_empty.png" id="2_cc3qq"]
 [ext_resource type="Texture2D" uid="uid://cg83x0l26co51" path="res://assets/pistol/pistol_shoot_1.png" id="2_xyv2r"]
 [ext_resource type="Texture2D" uid="uid://cp8kysco85st8" path="res://assets/pistol/pistol_shoot_2.png" id="3_cffys"]
 
@@ -16,9 +17,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_cc3qq")
+}],
+"loop": 0,
+"name": &"empty",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_xyv2r")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("3_cffys")
 }],
 "loop": 0,

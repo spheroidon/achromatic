@@ -19,37 +19,37 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
-"duration": 1.15,
+"duration": 1.4,
 "texture": ExtResource("2_hdh7l")
 }, {
-"duration": 1.2,
+"duration": 1.5,
 "texture": ExtResource("3_0mjtx")
 }, {
-"duration": 1.1,
+"duration": 1.4,
 "texture": ExtResource("4_vlad1")
 }, {
-"duration": 1.05,
+"duration": 1.1,
 "texture": ExtResource("5_oqag1")
 }, {
-"duration": 1.0,
+"duration": 1.05,
 "texture": ExtResource("6_6tj1n")
 }, {
 "duration": 0.95,
 "texture": ExtResource("7_ftmsj")
 }, {
-"duration": 0.9,
+"duration": 0.8,
 "texture": ExtResource("8_y2wor")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("9_hb2oo")
 }, {
-"duration": 1.05,
+"duration": 0.35,
 "texture": ExtResource("10_8yc2o")
 }],
 "loop": 0,
 "name": &"shoot",
-"speed": 8.0
+"speed": 9.0
 }]

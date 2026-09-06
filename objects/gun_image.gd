@@ -1,4 +1,4 @@
-extends TextureRect
+class_name AnimatedTextureRect extends TextureRect
 
 @export var sprites: SpriteFrames
 @export var current_animation: String = "default"
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		frame_delta = 0
 
 func play(animation_name: String = current_animation):
-	frame_index = 0
+	frame_index = -1
 	frame_delta = 0.0
 	current_animation = animation_name
 	_get_animation_data(current_animation)
@@ -45,17 +45,22 @@ func stop():
 	frame_index = 0
 	playing = false
 	
+func is_playing():
+	return playing
+	
 func _get_next_frame():
 	frame_index += 1
 	var frame_count = sprites.get_frame_count(current_animation)
 	if frame_index >= frame_count:
-		frame_index = 0
 		if not sprites.get_animation_loop(current_animation):
+			frame_index -= 1
 			playing = false
+		else:
+			frame_index = 0
 	_get_animation_data(current_animation)
 	return sprites.get_frame_texture(current_animation,frame_index)
 	
 func _get_animation_data(animation_name: String = current_animation):
 	fps = sprites.get_animation_speed(animation_name)
-	refresh_rate = sprites.get_frame_duration(animation_name, frame_index)
+	refresh_rate = sprites.get_frame_duration(animation_name, frame_index||0)
 	

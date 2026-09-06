@@ -87,6 +87,12 @@ func _physics_process(delta: float) -> void:
 		if gun_index < 0:
 			gun_index = GUNS.size()-1
 		switch_gun()
+	if Input.is_action_just_pressed("gun_0"):
+		gun_index = 0
+		switch_gun()
+	if Input.is_action_just_pressed("gun_1"):
+		gun_index = 1
+		switch_gun()
 	
 	# Shooting
 	if Input.is_action_pressed("shoot") and current_shoot_cooldown <= 0:

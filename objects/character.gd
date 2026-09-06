@@ -16,6 +16,7 @@ const GUNS = [
 		"cooldown": 1.4
 	}
 ]
+var target_gun_index = 0
 var gun_index = 0
 var current_shoot_cooldown: float = 0.0
 
@@ -27,6 +28,36 @@ var sprinting: bool = false
 
 func _ready():
 	switch_gun()
+	
+func _process(delta: float):
+	# Cooldowns
+	if current_shoot_cooldown > 0:
+		current_shoot_cooldown -= delta
+	
+	# Animations
+	if not gun_image.is_playing() and gun_image.current_animation == "shoot":
+		gun_image.play("default")
+	
+	# Gun Switching
+	if Input.is_action_just_pressed("next_gun"):
+		target_gun_index = gun_index + 1
+		if target_gun_index >= GUNS.size():
+			target_gun_index = 0
+	if Input.is_action_just_pressed("previous_gun"):
+		target_gun_index = gun_index - 1
+		if target_gun_index < 0:
+			target_gun_index = GUNS.size()-1
+	if Input.is_action_just_pressed("gun_0"):
+		target_gun_index = 0
+	if Input.is_action_just_pressed("gun_1"):
+		target_gun_index = 1
+	if current_shoot_cooldown <= 0:
+		switch_gun()
+	
+	# Shooting
+	if Input.is_action_pressed("shoot") and current_shoot_cooldown <= 0:
+		current_shoot_cooldown = GUNS[gun_index]["cooldown"]
+		gun_image.play("shoot")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -40,14 +71,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			#camera.rotate_x(-event.relative.y * 0.008)
 
 func _physics_process(delta: float) -> void:
-	# Cooldowns
-	if current_shoot_cooldown > 0:
-		current_shoot_cooldown -= delta
-		
-	# Animations
-	if not gun_image.is_playing() and gun_image.current_animation == "shoot":
-		gun_image.play("default")
-	
 	# Movement
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -75,31 +98,9 @@ func _physics_process(delta: float) -> void:
 	if abs(input_dir.length()) > 0.1:
 		var offset = input_dir.normalized() * 0.6
 		stair_handler.position = Vector3(offset.x,-0.5,offset.y)
-		
-	# Gun Switching
-	if Input.is_action_just_pressed("next_gun"):
-		gun_index += 1
-		if gun_index >= GUNS.size():
-			gun_index = 0
-		switch_gun()
-	if Input.is_action_just_pressed("previous_gun"):
-		gun_index -= 1
-		if gun_index < 0:
-			gun_index = GUNS.size()-1
-		switch_gun()
-	if Input.is_action_just_pressed("gun_0"):
-		gun_index = 0
-		switch_gun()
-	if Input.is_action_just_pressed("gun_1"):
-		gun_index = 1
-		switch_gun()
-	
-	# Shooting
-	if Input.is_action_pressed("shoot") and current_shoot_cooldown <= 0:
-		current_shoot_cooldown = GUNS[gun_index]["cooldown"]
-		gun_image.play("shoot")
 
 func switch_gun():
+	gun_index = target_gun_index
 	gun_image.sprites = GUNS[gun_index]["sprites"]
 	gun_image.stop()
 	gun_image.play("default")

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dd3weo6tcdfsx"]
 
 [ext_resource type="Script" uid="uid://by6kwjcoa3krm" path="res://objects/character.gd" id="1_ykyjo"]
+[ext_resource type="Texture2D" uid="uid://b0ergn1am1j78" path="res://assets/shotgun/shotgun_shoot_1.png" id="2_nmc1l"]
 [ext_resource type="Script" uid="uid://ly5w11s2rltn" path="res://objects/gun_image.gd" id="3_uxov2"]
-[ext_resource type="SpriteFrames" uid="uid://d107mmirjhjs3" path="res://assets/shotgun/shotgun_shoot.tres" id="4_nmc1l"]
+[ext_resource type="SpriteFrames" uid="uid://d107mmirjhjs3" path="res://assets/shotgun/shotgun.tres" id="4_nmc1l"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_pmfrs"]
 length = 0.6
@@ -46,10 +47,9 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+texture = ExtResource("2_nmc1l")
 expand_mode = 5
 stretch_mode = 5
 script = ExtResource("3_uxov2")
 sprites = ExtResource("4_nmc1l")
-current_animation = "shoot"
 auto_play = true
-playing = true

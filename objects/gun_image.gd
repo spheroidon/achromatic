@@ -1,5 +1,3 @@
-@tool
-
 extends TextureRect
 
 @export var sprites: SpriteFrames

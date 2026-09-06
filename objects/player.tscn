@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dd3weo6tcdfsx"]
+
+[ext_resource type="Script" uid="uid://by6kwjcoa3krm" path="res://objects/character.gd" id="1_ykyjo"]
+[ext_resource type="Script" uid="uid://ly5w11s2rltn" path="res://objects/gun_image.gd" id="3_uxov2"]
+[ext_resource type="SpriteFrames" uid="uid://d107mmirjhjs3" path="res://assets/shotgun/shotgun_shoot.tres" id="4_nmc1l"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_pmfrs"]
+length = 0.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pmfrs"]
+
+[node name="Character" type="CharacterBody3D" unique_id=1110000207]
+floor_constant_speed = true
+floor_snap_length = 0.0
+script = ExtResource("1_ykyjo")
+
+[node name="StairHandler" type="CollisionShape3D" parent="." unique_id=1660434219]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("SeparationRayShape3D_pmfrs")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1950642837]
+shape = SubResource("CapsuleShape3D_pmfrs")
+
+[node name="Camera" type="Camera3D" parent="." unique_id=908825319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Guns" type="CanvasLayer" parent="." unique_id=445159018]
+
+[node name="Control" type="Control" parent="Guns" unique_id=480156688]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GunImage" type="TextureRect" parent="Guns/Control" unique_id=994479346]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 5
+stretch_mode = 5
+script = ExtResource("3_uxov2")
+sprites = ExtResource("4_nmc1l")
+current_animation = "shoot"
+auto_play = true
+playing = true

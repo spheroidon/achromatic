@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://d107mmirjhjs3"]
+
+[ext_resource type="Texture2D" uid="uid://b0ergn1am1j78" path="res://assets/shotgun/shotgun_shoot_1.png" id="1_u2wld"]
+[ext_resource type="Texture2D" uid="uid://b4n1defuykyl6" path="res://assets/shotgun/shotgun_shoot_2.png" id="2_w0xxh"]
+[ext_resource type="Texture2D" uid="uid://dqq11nvmc8wlk" path="res://assets/shotgun/shotgun_shoot_3.png" id="3_7tx75"]
+[ext_resource type="Texture2D" uid="uid://bqotltbo8tklr" path="res://assets/shotgun/shotgun_shoot_4.png" id="4_cqat2"]
+[ext_resource type="Texture2D" uid="uid://djufte52a06lu" path="res://assets/shotgun/shotgun_shoot_5.png" id="5_fdawj"]
+[ext_resource type="Texture2D" uid="uid://dkelfyg3bis6d" path="res://assets/shotgun/shotgun_shoot_6.png" id="6_6qf5s"]
+[ext_resource type="Texture2D" uid="uid://u4ig4j47yfye" path="res://assets/shotgun/shotgun_shoot_7.png" id="7_ikdfk"]
+[ext_resource type="Texture2D" uid="uid://bg504dum3ovxg" path="res://assets/shotgun/shotgun_shoot_8.png" id="8_y7qaa"]
+[ext_resource type="Texture2D" uid="uid://diju5q1oo4i10" path="res://assets/shotgun/shotgun_shoot_9.png" id="9_0rejv"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.2,
+"texture": ExtResource("1_u2wld")
+}, {
+"duration": 1.4,
+"texture": ExtResource("2_w0xxh")
+}, {
+"duration": 1.15,
+"texture": ExtResource("3_7tx75")
+}, {
+"duration": 1.05,
+"texture": ExtResource("4_cqat2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fdawj")
+}, {
+"duration": 0.95,
+"texture": ExtResource("6_6qf5s")
+}, {
+"duration": 0.9,
+"texture": ExtResource("7_ikdfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y7qaa")
+}, {
+"duration": 1.05,
+"texture": ExtResource("9_0rejv")
+}],
+"loop": 1,
+"name": &"shoot",
+"speed": 8.0
+}]

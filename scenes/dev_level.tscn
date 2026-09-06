@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://l47voo13y64a"]
+
+[ext_resource type="PackedScene" uid="uid://dd3weo6tcdfsx" path="res://objects/player.tscn" id="1_g3pss"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g3pss"]
+sky_top_color = Color(0.7, 0.7, 0.7, 1)
+sky_horizon_color = Color(0.974925, 0.974925, 0.974925, 1)
+ground_bottom_color = Color(0.2, 0.2, 0.2, 1)
+ground_horizon_color = Color(0.974925, 0.974925, 0.974925, 1)
+energy_multiplier = 0.8
+
+[sub_resource type="Sky" id="Sky_i675q"]
+sky_material = SubResource("ProceduralSkyMaterial_g3pss")
+
+[sub_resource type="Environment" id="Environment_e6gs0"]
+background_mode = 2
+sky = SubResource("Sky_i675q")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pmfrs"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i675q"]
+data = PackedVector3Array(-2.5, 0.5, 2.5, 2.5, 0.5, 2.5, -2.5, -0.5, 2.5, 2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, 2.5, 2.5, 0.5, -2.5, -2.5, 0.5, -2.5, 2.5, -0.5, -2.5, -2.5, 0.5, -2.5, -2.5, -0.5, -2.5, 2.5, -0.5, -2.5, 2.5, 0.5, 2.5, 2.5, 0.5, -2.5, 2.5, -0.5, 2.5, 2.5, 0.5, -2.5, 2.5, -0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, 0.5, 2.5, -2.5, 0.5, 2.5, 2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, 0.5, -2.5, 2.5, 0.5, -2.5, -2.5, -0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, -0.5, 2.5, 2.5, -0.5, -2.5, -2.5, -0.5, -2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o1l2c"]
+size = Vector3(35, 1, 35)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g3pss"]
+data = PackedVector3Array(-17.5, 0.5, 17.5, 17.5, 0.5, 17.5, -17.5, -0.5, 17.5, 17.5, 0.5, 17.5, 17.5, -0.5, 17.5, -17.5, -0.5, 17.5, 17.5, 0.5, -17.5, -17.5, 0.5, -17.5, 17.5, -0.5, -17.5, -17.5, 0.5, -17.5, -17.5, -0.5, -17.5, 17.5, -0.5, -17.5, 17.5, 0.5, 17.5, 17.5, 0.5, -17.5, 17.5, -0.5, 17.5, 17.5, 0.5, -17.5, 17.5, -0.5, -17.5, 17.5, -0.5, 17.5, -17.5, 0.5, -17.5, -17.5, 0.5, 17.5, -17.5, -0.5, -17.5, -17.5, 0.5, 17.5, -17.5, -0.5, 17.5, -17.5, -0.5, -17.5, 17.5, 0.5, 17.5, -17.5, 0.5, 17.5, 17.5, 0.5, -17.5, -17.5, 0.5, 17.5, -17.5, 0.5, -17.5, 17.5, 0.5, -17.5, -17.5, -0.5, 17.5, 17.5, -0.5, 17.5, -17.5, -0.5, -17.5, 17.5, -0.5, 17.5, 17.5, -0.5, -17.5, -17.5, -0.5, -17.5)
+
+[node name="DevLevel" type="Node3D" unique_id=891986972]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1151269650]
+environment = SubResource("Environment_e6gs0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1374797954]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=235945938 instance=ExtResource("1_g3pss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87440515, 0)
+
+[node name="Box" type="MeshInstance3D" parent="." unique_id=292003065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.401, 0.5, 0)
+mesh = SubResource("BoxMesh_pmfrs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box" unique_id=968488092]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D" unique_id=879560775]
+shape = SubResource("ConcavePolygonShape3D_i675q")
+
+[node name="Box2" type="MeshInstance3D" parent="." unique_id=238112247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.401, 1, -5)
+mesh = SubResource("BoxMesh_pmfrs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box2" unique_id=792996864]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box2/StaticBody3D" unique_id=1947974262]
+shape = SubResource("ConcavePolygonShape3D_i675q")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=277734886]
+mesh = SubResource("BoxMesh_o1l2c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=646877940]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1438296335]
+shape = SubResource("ConcavePolygonShape3D_g3pss")

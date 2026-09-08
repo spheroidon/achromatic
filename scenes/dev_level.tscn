@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://l47voo13y64a"]
 
 [ext_resource type="PackedScene" uid="uid://dd3weo6tcdfsx" path="res://objects/player.tscn" id="1_g3pss"]
+[ext_resource type="PackedScene" uid="uid://cpmgcxoxwov4c" path="res://objects/ammo/shells/ammo_shells_2.tscn" id="2_i675q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g3pss"]
 sky_top_color = Color(0.7, 0.7, 0.7, 1)
@@ -78,3 +79,6 @@ mesh = SubResource("BoxMesh_o1l2c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1438296335]
 shape = SubResource("ConcavePolygonShape3D_g3pss")
+
+[node name="AmmoShells2" parent="." unique_id=1955714053 instance=ExtResource("2_i675q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.83495855, -8)

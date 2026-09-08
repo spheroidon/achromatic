@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 @export var base_speed: float = 8.0
 @export var sprint_speed: float = 14.0
@@ -135,3 +135,9 @@ func switch_gun():
 	gun_image.sprites = GUNS[gun_index]["sprites"]
 	gun_image.stop()
 	gun_image.play("default")
+	
+func add_ammo(ammo_type: int, ammo_amount: int):
+	if ammo[ammo_type] + ammo_amount >= AMMO_TYPES[ammo_type]["max_amount"]:
+		ammo[ammo_type] = AMMO_TYPES[ammo_type]["max_amount"]
+	else:
+		ammo[ammo_type] += ammo_amount

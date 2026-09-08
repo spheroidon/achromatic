@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cpmgcxoxwov4c"]
+
+[ext_resource type="Script" uid="uid://pyvql6a803r4" path="res://objects/ammo/ammo.gd" id="1_fkh36"]
+[ext_resource type="Texture2D" uid="uid://ds57t1oxi46ou" path="res://assets/ammo/shells/ammo_shells_2.png" id="1_t1tky"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o1l2c"]
+
+[node name="AmmoShells2" type="Node3D" unique_id=1955714053]
+script = ExtResource("1_fkh36")
+ammo_type = 1
+ammo_amount = 2
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1059242974]
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture = ExtResource("1_t1tky")
+
+[node name="PickupArea" type="Area3D" parent="." unique_id=604091126]
+input_ray_pickable = false
+monitorable = false
+
+[node name="Shape" type="CollisionShape3D" parent="PickupArea" unique_id=405321082]
+shape = SubResource("BoxShape3D_o1l2c")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

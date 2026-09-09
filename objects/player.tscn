@@ -28,6 +28,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Guns" type="CanvasLayer" parent="." unique_id=445159018]
 
+[node name="ShootAudio" type="AudioStreamPlayer" parent="Guns" unique_id=1264924532]
+
 [node name="Control" type="Control" parent="Guns" unique_id=480156688]
 layout_mode = 3
 anchors_preset = 15

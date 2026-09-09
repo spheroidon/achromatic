@@ -8,6 +8,7 @@ const GUNS = [
 	{
 		"name": "Pistol",
 		"sprites": preload("res://assets/pistol/pistol.tres"),
+		"shoot_sound": preload("res://assets/pistol/pistol_shoot.ogg"),
 		"cooldown": 0.45,
 		"ammo_type": 0,
 		"ammo_per_shot": 1
@@ -15,6 +16,7 @@ const GUNS = [
 	{
 		"name": "Shotgun",
 		"sprites": preload("res://assets/shotgun/shotgun.tres"),
+		"shoot_sound": preload("res://assets/shotgun/shotgun_shoot.ogg"),
 		"cooldown": 1.4,
 		"ammo_type": 1,
 		"ammo_per_shot": 2
@@ -45,6 +47,7 @@ var sprinting: bool = false
 @onready var camera: Camera3D = $Camera
 @onready var gun_image: AnimatedTextureRect = $Guns/Control/GunImage
 @onready var stair_handler: CollisionShape3D = $StairHandler
+@onready var shoot_audio: AudioStreamPlayer = $Guns/ShootAudio
 
 func _ready():
 	for ammo_type in AMMO_TYPES:
@@ -86,6 +89,7 @@ func shoot():
 			ammo[gun["ammo_type"]] -= gun["ammo_per_shot"]
 			current_shoot_cooldown = gun["cooldown"]
 			gun_image.play("shoot")
+			shoot_audio.play()
 		else:
 			current_shoot_cooldown = 0.6
 			gun_image.play("empty")
@@ -135,6 +139,8 @@ func switch_gun():
 	gun_image.sprites = GUNS[gun_index]["sprites"]
 	gun_image.stop()
 	gun_image.play("default")
+	shoot_audio.stop()
+	shoot_audio.stream = GUNS[gun_index]["shoot_sound"]
 	
 func add_ammo(ammo_type: int, ammo_amount: int):
 	if ammo[ammo_type] + ammo_amount >= AMMO_TYPES[ammo_type]["max_amount"]:

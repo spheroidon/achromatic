@@ -49,6 +49,7 @@ var sprinting: bool = false
 @onready var stair_handler: CollisionShape3D = $StairHandler
 @onready var shoot_audio: AudioStreamPlayer = $Guns/ShootAudio
 @onready var empty_audio: AudioStreamPlayer = $Guns/EmptyAudio
+@onready var ammo_pickup_audio: AudioStreamPlayer = $Guns/AmmoPickupAudio
 
 func _ready():
 	for ammo_type in AMMO_TYPES:
@@ -152,4 +153,5 @@ func add_ammo(ammo_type: int, ammo_amount: int) -> bool:
 			ammo[ammo_type] = AMMO_TYPES[ammo_type]["max_amount"]
 		else:
 			ammo[ammo_type] += ammo_amount
+		ammo_pickup_audio.play()
 		return true

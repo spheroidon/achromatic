@@ -105,3 +105,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2745955, 0.8145, -10.42561
 
 [node name="AmmoShells8" parent="." unique_id=1519720793 instance=ExtResource("4_57vqv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2720985, 0.81449974, -8.654583)
+
+[node name="AmmoShells9" parent="." unique_id=133768270 instance=ExtResource("4_57vqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.651315, 0.81450045, -8.587394)
+
+[node name="AmmoShells10" parent="." unique_id=1175138038 instance=ExtResource("4_57vqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.233209, 0.81450045, -10.7323265)
+
+[node name="AmmoShells11" parent="." unique_id=1819792782 instance=ExtResource("4_57vqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.738972, 0.8145, -9.138639)
+
+[node name="AmmoShells12" parent="." unique_id=1317048180 instance=ExtResource("4_57vqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.570905, 0.8144995, -9.4678135)

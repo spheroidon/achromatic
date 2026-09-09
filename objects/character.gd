@@ -144,8 +144,12 @@ func switch_gun():
 	shoot_audio.stop()
 	shoot_audio.stream = GUNS[gun_index]["shoot_sound"]
 	
-func add_ammo(ammo_type: int, ammo_amount: int):
-	if ammo[ammo_type] + ammo_amount >= AMMO_TYPES[ammo_type]["max_amount"]:
-		ammo[ammo_type] = AMMO_TYPES[ammo_type]["max_amount"]
+func add_ammo(ammo_type: int, ammo_amount: int) -> bool:
+	if ammo[ammo_type] == AMMO_TYPES[ammo_type]["max_amount"]:
+		return false
 	else:
-		ammo[ammo_type] += ammo_amount
+		if ammo[ammo_type] + ammo_amount >= AMMO_TYPES[ammo_type]["max_amount"]:
+			ammo[ammo_type] = AMMO_TYPES[ammo_type]["max_amount"]
+		else:
+			ammo[ammo_type] += ammo_amount
+		return true

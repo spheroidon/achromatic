@@ -7,5 +7,6 @@ extends Node3D
 
 func _on_pickup_area_body_entered(player: Node3D) -> void:
 	if player is Player:
-		player.add_ammo(ammo_type, ammo_amount)
-		queue_free()
+		var added = player.add_ammo(ammo_type, ammo_amount)
+		if added:
+			queue_free()

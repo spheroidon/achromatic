@@ -48,6 +48,7 @@ var sprinting: bool = false
 @onready var gun_image: AnimatedTextureRect = $Guns/Control/GunImage
 @onready var stair_handler: CollisionShape3D = $StairHandler
 @onready var shoot_audio: AudioStreamPlayer = $Guns/ShootAudio
+@onready var empty_audio: AudioStreamPlayer = $Guns/EmptyAudio
 
 func _ready():
 	for ammo_type in AMMO_TYPES:
@@ -93,6 +94,7 @@ func shoot():
 		else:
 			current_shoot_cooldown = 0.6
 			gun_image.play("empty")
+			empty_audio.play()
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

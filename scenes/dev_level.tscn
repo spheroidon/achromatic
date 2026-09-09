@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dd3weo6tcdfsx" path="res://objects/player.tscn" id="1_g3pss"]
 [ext_resource type="PackedScene" uid="uid://cpmgcxoxwov4c" path="res://objects/ammo/shells/ammo_shells_2.tscn" id="2_i675q"]
 [ext_resource type="PackedScene" uid="uid://b6xpl2ck3v7df" path="res://objects/ammo/shells/ammo_shells_1.tscn" id="3_e6gs0"]
+[ext_resource type="PackedScene" uid="uid://bdmnince3pecq" path="res://objects/ammo/shells/ammo_shells_4.tscn" id="4_57vqv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g3pss"]
 sky_top_color = Color(0.7, 0.7, 0.7, 1)
@@ -95,3 +96,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80091, 0.8585, -9.119815)
 
 [node name="AmmoShells5" parent="." unique_id=1150385896 instance=ExtResource("2_i675q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8110225, 0.8585, -10.070677)
+
+[node name="AmmoShells6" parent="." unique_id=1622461381 instance=ExtResource("4_57vqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.63599205, 0.81449974, -11.611806)
+
+[node name="AmmoShells7" parent="." unique_id=560036718 instance=ExtResource("4_57vqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2745955, 0.8145, -10.425611)
+
+[node name="AmmoShells8" parent="." unique_id=1519720793 instance=ExtResource("4_57vqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2720985, 0.81449974, -8.654583)
